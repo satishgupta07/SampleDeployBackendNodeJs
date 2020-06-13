@@ -1,10 +1,8 @@
 const Sequelize = require('sequelize')
-
 const db = new Sequelize({
   dialect: 'sqlite',
   storage: __dirname + '/test.db'
 })
-
 const Tasks = db.define('task', {
   id: {
     type: Sequelize.DataTypes.INTEGER,
@@ -18,6 +16,10 @@ const Tasks = db.define('task', {
   done: {
     type: Sequelize.DataTypes.BOOLEAN,
     defaultValue: false
+  },
+  priority: {
+    type: Sequelize.DataTypes.ENUM('high', 'low', 'normal'),
+    defaultValue: 'normal'
   }
 })
 
